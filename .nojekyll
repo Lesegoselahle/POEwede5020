@@ -1,0 +1,3 @@
+git add .nojekyll
+git commit -m "Fix GitHub Pages _images ignored - add .nojekyll"
+git push
