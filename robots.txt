@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /_images/
+Sitemap: https://humi-naturals.netlify.app/sitemap.xml

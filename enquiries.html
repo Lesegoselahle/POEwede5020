@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enquiries - Sponsorship & Collaboration | Humi Naturals</title>
+  <meta name="description" content="Enquire about Humi Naturals products, sponsorships, and collaborations. Partner with South Africa's natural hair care brand - Moisture for the culture.">
+  <meta name="keywords" content="Humi Naturals enquiry, sponsorship natural hair brand, collaboration South Africa">
+  <link rel="canonical" href="https://humi-naturals.netlify.app/enquiries.html">
+  <meta property="og:title" content="Enquiries - Humi Naturals">
+  <meta property="og:description" content="Partner with Humi Naturals - sponsorship and collaboration enquiries">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    .radio-group{display:flex; gap:1rem; flex-wrap:wrap; margin:1rem 0;}
+    .radio-group label{background:#1a1b1b; border:1.5px solid #032209; padding:0.6rem 1rem; border-radius:999px; cursor:pointer; transition:0.2s;}
+    .radio-group input:checked + span{color:var(--accent);}
+    .radio-group label:has(input:checked){border-color:var(--accent); background:#063b09;}
+    .hidden{display:none !important;}
+    .success-box{background:#093d09; border:1px solid #b6d7b6; color:#2d5a2d; padding:1rem; border-radius:12px; margin-top:1rem;}
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="logo"><img src="humi-logo.jpg" alt="Humi Naturals Logo - Moisture for the culture" style="height:40px; border-radius:8px; vertical-align:middle;"> Humi Naturals</div>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="products.html">Products</a>
+      <a href="about.html">About</a>
+      <a href="blog.html">Blog</a>
+      <a href="contacts.html">Contact</a>
+      <a href="enquiries.html">Enquiries</a>
+    </nav>
+  </header>
+
+  <section class="section">
+    <h1>Enquiries & Partnerships</h1>
+    <p style="color:var(--text-muted); max-width:600px;">Have a question? Want to stock Humi Naturals or sponsor natural hair content? Fill the form - our team replies within 24 hours.</p>
+  </section>
+
+  <section class="section">
+    <form id="enquiry-form" novalidate class="reveal active" style="max-width:650px; background:#fff; padding:2rem; border-radius:16px; box-shadow:0 10px 30px rgba(90,45,45,0.08);">
+      
+      <label>Full Name</label>
+      <input type="text" id="eq-name" class="search-bar" placeholder="e.g. Naledi Molefe">
+      <div class="error" id="err-eq-name"></div>
+
+      <label>Email Address</label>
+      <input type="email" id="eq-email" class="search-bar" placeholder="you@email.com">
+      <div class="error" id="err-eq-email"></div>
+
+      <label>Enquiry Type (Part 3 Requirement - Radio Selection)</label>
+      <div class="radio-group">
+        <label><input type="radio" name="enquiryType" value="general" checked onchange="toggleSponsor()"> <span>General</span></label>
+        <label><input type="radio" name="enquiryType" value="product" onchange="toggleSponsor()"> <span>Product Info</span></label>
+        <label><input type="radio" name="enquiryType" value="sponsor" onchange="toggleSponsor()"> <span>Sponsorship / Collab</span></label>
+      </div>
+
+      <!-- CONDITIONAL FIELD - Shows only for sponsorship (Part 3.2 marks) -->
+      <div id="sponsor-fields" class="hidden" style="background:#fdf6f1; padding:1.2rem; border-radius:12px; border:1px dashed var(--accent); margin:1rem 0;">
+        <h4 style="color:var(--primary); margin-bottom:0.8rem;">Sponsorship Details</h4>
+        <label>Company / Brand Name</label>
+        <input type="text" id="eq-company" class="search-bar" placeholder="e.g. Curlfest SA">
+        <div class="error" id="err-eq-company"></div>
+
+        <label>Proposed Budget (per month)</label>
+        <select id="eq-budget" class="search-bar">
+          <option value="">Select budget</option>
+          <option value="R500 - Micro Influencer">R500 - Micro Influencer</option>
+          <option value="R1500 - Content Creator">R1500 - Content Creator</option>
+          <option value="R5000 - Brand Ambassador">R5000 - Brand Ambassador</option>
+        </select>
+        <div class="error" id="err-eq-budget"></div>
+        <p style="font-size:0.85rem; color:var(--text-muted);">This field appears dynamically via JavaScript - Part 3 Interactive Requirement</p>
+      </div>
+
+      <label>Your Message</label>
+      <textarea id="eq-message" class="search-bar" rows="5" placeholder="Tell us about your enquiry..."></textarea>
+      <div class="error" id="err-eq-message"></div>
+
+      <br>
+      <button type="submit" class="btn btn-primary" style="width:100%;">Submit Enquiry</button>
+      
+      <div id="eq-success"></div>
+    </form>
+  </section>
+
+  <footer class="footer">
+    <div><h4>Shop</h4><a href="shop.html">All Products</a></div>
+    <div><h4>Support</h4><a href="contacts.html">Contact</a></div>
+    <div><h4>Company</h4><a href="about.html">Our Story</a></div>
+    <div><h4>Follow</h4><a href="#">hello@huminaturals.co.za</a></div>
+  </footer>
+
+  <script>
+    function toggleSponsor(){
+      const type = document.querySelector('input[name="enquiryType"]:checked').value;
+      document.getElementById('sponsor-fields').classList.toggle('hidden', type !== 'sponsor');
+    }
+
+    document.getElementById('enquiry-form').addEventListener('submit', function(e){
+      e.preventDefault();
+      let valid = true;
+      document.querySelectorAll('.error').forEach(el=>el.textContent='');
+      document.getElementById('eq-success').innerHTML='';
+
+      const name = document.getElementById('eq-name').value.trim();
+      const email = document.getElementById('eq-email').value.trim();
+      const message = document.getElementById('eq-message').value.trim();
+      const type = document.querySelector('input[name="enquiryType"]:checked').value;
+
+      if(name.length < 2){ document.getElementById('err-eq-name').textContent='Name must be at least 2 characters'; valid=false; }
+      if(!/^\S+@\S+\.\S+$/.test(email)){ document.getElementById('err-eq-email').textContent='Enter valid email address'; valid=false; }
+      if(message.length < 10){ document.getElementById('err-eq-message').textContent='Message must be at least 10 characters'; valid=false; }
+
+      if(type === 'sponsor'){
+        const company = document.getElementById('eq-company').value.trim();
+        const budget = document.getElementById('eq-budget').value;
+        if(!company){ document.getElementById('err-eq-company').textContent='Company name required for sponsorship'; valid=false; }
+        if(!budget){ document.getElementById('err-eq-budget').textContent='Please select budget'; valid=false; }
+      }
+
+      if(!valid) return;
+
+      // Dynamic success with JS (Part 3 feedback)
+      let successHTML = `<div class="success-box"><strong>Thank you, ${name}!</strong><br>Your ${type} enquiry has been received. We will reply to ${email} within 24 hours.`;
+      if(type === 'sponsor'){
+        successHTML += `<br><br>Partnership Budget: <strong>${document.getElementById('eq-budget').value}</strong> noted. Our collaborations team will contact you.`;
+      }
+      successHTML += `</div>`;
+      document.getElementById('eq-success').innerHTML = successHTML;
+      this.reset();
+      document.getElementById('sponsor-fields').classList.add('hidden');
+    });
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>

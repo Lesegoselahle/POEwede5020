@@ -1,0 +1,56 @@
+[
+  {
+    "id": 1,
+    "name": "Moisture Boost Shampoo",
+    "price": 180,
+    "category": "Curls",
+    "image": "_images/hair-product-1.jpeg",
+    "description": "Gentle sulphate-free shampoo with shea butter and baobab oil. Perfect for dry curls.",
+    "ingredients": "Aqua, Shea Butter, Baobab Oil, Coconut Oil"
+  },
+  {
+    "id": 2,
+    "name": "Deep Moisture Conditioner",
+    "price": 220,
+    "category": "Coils",
+    "image": "_images/hair-product-2.jpeg",
+    "description": "Intense hydration for coils and kinks. Detangles and restores moisture.",
+    "ingredients": "Shea Butter, Marula Oil, Aloe Vera, Honey"
+  },
+  {
+    "id": 3,
+    "name": "Growth & Shine Oil",
+    "price": 160,
+    "category": "Waves",
+    "image": "_images/hair-product-3.jpeg",
+    "description": "Lightweight oil blend for scalp massage and shine. Stimulates growth.",
+    "ingredients": "Castor Oil, Rosemary, Peppermint, Jojoba Oil"
+  },
+  {
+    "id": 4,
+    "name": "Curl Defining Gel",
+    "price": 150,
+    "category": "Curls",
+    "image": "_images/hair-product-1.jpeg",
+    "description": "Strong hold without flaking. Defines curls and controls frizz.",
+    "ingredients": "Flaxseed, Aloe Vera, Argan Oil"
+  },
+  {
+    "id": 5,
+    "name": "Leave-In Conditioner",
+    "price": 200,
+    "category": "Coils",
+    "image": "_images/hair-product-2.jpeg",
+    "description": "Daily moisture for coils. Keeps hair soft and manageable all day.",
+    "ingredients": "Coconut Milk, Shea Butter, Vitamin E"
+  },
+  {
+    "id": 6,
+    "name": "Scalp Soothing Tonic",
+    "price": 170,
+    "category": "Waves",
+    "image": "_images/hair-product-3.jpeg",
+    "description": "Soothes itchy scalp and reduces dandruff. With tea tree and peppermint.",
+    "ingredients": "Tea Tree Oil, Peppermint, Aloe Vera"
+  }
+]

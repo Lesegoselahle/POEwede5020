@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog - Hair Care Tips | Humi Naturals</title>
+  <meta name="description" content="Natural hair care tips, curl routines, and moisture advice from Humi Naturals - Moisture for the culture.">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+    <div class="logo"><img src="humi-logo.jpg" alt="Humi Naturals Logo" style="height:40px; border-radius:8px;"> Humi Naturals</div>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="products.html">Shop</a>
+      <a href="about.html">About</a>
+      <a href="blog.html">Blog</a>
+      <a href="contacts.html">Contact</a>
+      <a href="enquiries.html">Enquiries</a>
+    </nav>
+  </header>
+
+  <section class="section">
+    <h1>Humi Blog - Moisture for the culture</h1>
+    <p>Dynamic blog posts loaded with JavaScript (Part 3 Requirement - 2.2)</p>
+    <br>
+    <input type="text" id="blog-search" class="search-bar" placeholder="Search blog: e.g. curls, moisture..." onkeyup="filterBlogs()">
+
+    <div id="blog-container" class="product-grid"></div>
+  </section>
+
+  <footer class="footer">
+    <div><h4>Shop</h4><a href="products.html">All Products</a></div>
+    <div><h4>Support</h4><a href="contacts.html">Contact</a></div>
+    <div><h4>Company</h4><a href="about.html">Our Story</a></div>
+    <div><h4>Follow</h4><a href="#">Instagram</a></div>
+  </footer>
+
+  <script>
+    const blogs = [
+      {title:"5 Moisture Tips for Coily Hair", date:"2026-10-15", excerpt:"How to keep 4C hair hydrated in Johannesburg's dry climate. Use our leave-in + oil combo...", category:"coils moisture"},
+      {title:"Curl Routine for Beginners", date:"2026-10-10", excerpt:"Simple 3-step wash day: Shampoo, Deep Condition, Define with Gel. No flakes, all shine...", category:"curls routine"},
+      {title:"Why Chemical-Free Matters", date:"2026-10-05", excerpt:"Sulfates strip natural oils. We use shea butter and argan oil for healthy growth...", category:"ingredients natural"}
+    ];
+    function renderBlogs(list){
+      document.getElementById('blog-container').innerHTML = list.map(b=>`
+        <div class="product reveal active">
+          <h3>${b.title}</h3>
+          <p style="color:var(--text-muted); font-size:0.9rem;">${b.date}</p>
+          <p>${b.excerpt}</p>
+          <button class="btn btn-outline">Read More</button>
+        </div>
+      `).join('');
+    }
+    function filterBlogs(){
+      const term = document.getElementById('blog-search').value.toLowerCase();
+      const filtered = blogs.filter(b=> b.title.toLowerCase().includes(term) || b.excerpt.toLowerCase().includes(term) || b.category.toLowerCase().includes(term));
+      renderBlogs(filtered);
+    }
+    renderBlogs(blogs);
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>

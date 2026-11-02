@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop All Products - Humi Naturals</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+    <div class="logo"><img src="humi-logo.jpg" alt="Logo" onerror="this.style.display='none'"> Humi Naturals</div>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="shop.html" style="color:#c76b5c; font-weight:700;">Shop</a>
+      <a href="products.html">Products</a>
+      <a href="about.html">About</a>
+      <a href="blog.html">Blog</a>
+      <a href="contacts.html">Contact</a>
+      <a href="enquiries.html">Enquiries</a>
+    </nav>
+    <div><a href="#" class="btn btn-outline">Cart (<span id="cart-count">0</span>)</a></div>
+  </header>
+
+  <section class="section">
+    <h1 style="font-size:2.2rem;">Shop All Products</h1>
+    <!--Part 3 requirement 2.2-Fetch API-->-->
+
+    <input type="text" id="searchInput" class="search-bar" placeholder="Search by curls, coils, oil, gel, shampoo...">
+
+    <div style="display:flex; gap:0.8rem; margin:1rem 0 2rem; flex-wrap:wrap;">
+      <button class="btn btn-outline filter-btn" data-filter="Curls">Curls</button>
+      <button class="btn btn-outline filter-btn" data-filter="Coils">Coils</button>
+      <button class="btn btn-outline filter-btn" data-filter="Waves">Waves</button>
+      <button class="btn btn-outline filter-btn" data-filter="All">Show All</button>
+    </div>
+
+    <div id="product-container" class="product-grid">
+      <p>Loading products...</p>
+    </div>
+
+    <p id="no-results" style="display:none; text-align:center; color:#8a7a78; margin-top:2rem;">No products found matching your search.</p>
+  </section>
+
+  <!-- Lightbox for enlarged image -->
+  <div id="lightbox" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); z-index:2000; justify-content:center; align-items:center; cursor:pointer;" onclick="this.style.display='none'">
+    <img id="lightbox-img" src="" alt="Enlarged product image" style="max-width:90%; max-height:90%; border-radius:16px; background:#fff; padding:10px;">
+  </div>
+
+  <section class="section" style="background:#fff; margin-top:3rem;">
+    <h2>Why Shop Humi Naturals?</h2>
+    <div class="product-grid" style="margin-top:1rem;">
+      <div class="product" style="text-align:left;"><h3>100% Natural</h3><p style="color:#8a7a78; font-size:0.9rem;">No sulphates, parabens, cruelty-free.</p></div>
+      <div class="product" style="text-align:left;"><h3>For SA Hair</h3><p style="color:#8a7a78; font-size:0.9rem;">Made for curls, coils and waves in SA climate.</p></div>
+      <div class="product" style="text-align:left;"><h3>Fast Delivery</h3><p style="color:#8a7a78; font-size:0.9rem;">2-5 days across South Africa.</p></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div><h4>Shop</h4><a href="shop.html">All Products</a></div>
+    <div><h4>Support</h4><a href="contacts.html">Contact</a></div>
+    <div><h4>Company</h4><a href="about.html">Our Story</a></div>
+    <div><h4>Follow</h4><a href="#">hello@huminaturals.co.za</a></div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

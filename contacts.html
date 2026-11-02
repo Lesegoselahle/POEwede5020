@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | Humi Naturals - Moisture for the culture</title>
+  <meta name="description" content="Contact Humi Naturals - hello@huminaturals.co.za - Find us in Pretoria, South Africa">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Leaflet Map CSS for pinned map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <style>
+    .error{color:#b91c1c; font-size:0.85rem; margin-top:4px;}
+    .success-box{background:#f0f7f0; border:1px solid #b6d7b6; color:#2d5a2d; padding:1rem; border-radius:12px; margin-top:1rem;}
+    #map{width:100%; height:380px; border-radius:16px; border:2px solid #e8e0dc;}
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="logo"><img src="humi-logo.jpg" alt="Humi Naturals" style="height:40px; border-radius:8px; vertical-align:middle;"> Humi Naturals</div>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
+      <a href="products.html">Products</a>
+      <a href="about.html">About</a>
+      <a href="blog.html">Blog</a>
+      <a href="contacts.html">Contact</a>
+      <a href="enquiries.html">Enquiries</a>
+    </nav>
+  </header>
+
+  <section class="section">
+    <h1>Contact Us</h1>
+    <p style="color:#8a7a78;">Email: hello@huminaturals.co.za | Visit us in Pretoria</p>
+  </section>
+
+  <section class="section" style="display:grid; grid-template-columns:1fr 1fr; gap:2rem;">
+    <div>
+      <form id="contact-form" novalidate style="background:#fff; padding:1.5rem; border-radius:16px; box-shadow:0 10px 30px rgba(90,45,45,0.08);">
+        <label>Full Name</label>
+        <input type="text" id="c-name" class="search-bar" placeholder="Your name">
+        <div class="error" id="err-c-name"></div>
+
+        <label>Email</label>
+        <input type="email" id="c-email" class="search-bar" placeholder="you@email.com">
+        <div class="error" id="err-c-email"></div>
+
+        <label>Message</label>
+        <textarea id="c-message" class="search-bar" rows="5" placeholder="How can we help with your curls?"></textarea>
+        <div class="error" id="err-c-message"></div>
+
+        <br>
+        <button type="submit" class="btn btn-primary" style="width:100%;">Send Message</button>
+        <div id="c-success"></div>
+      </form>
+    </div>
+    
+    <div>
+      <h3 style="font-family:'Fraunces',serif;">📍 Our Location</h3>
+      <p style="color:#8a7a78; font-size:0.9rem; margin-bottom:0.8rem;">Humi Naturals HQ - Pretoria, Gauteng<br>Click pin for directions</p>
+      <div id="map"></div>
+      <p style="margin-top:0.8rem; font-size:0.85rem;"><a href="https://www.google.com/maps/search/?api=1&query=-25.7479,28.2293" target="_blank" style="color:var(--accent);">Open in Google Maps →</a></p>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div><h4>Shop</h4><a href="shop.html">All Products</a></div>
+    <div><h4>Support</h4><a href="contacts.html">Contact</a></div>
+    <div><h4>Company</h4><a href="about.html">Our Story</a></div>
+    <div><h4>Follow</h4><a href="#">hello@huminaturals.co.za</a></div>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    // PINNED LOCATION - Humi Naturals Pretoria
+    // Coordinates: -25.7479, 28.2293 (Pretoria central) - Change if you have exact street
+    const lat = -25.7479;
+    const lng = 28.2293;
+
+    const map = L.map('map').setView([lat, lng], 13);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap'
+    }).addTo(map);
+
+    // Custom pin for Humi Naturals
+    const marker = L.marker([lat, lng]).addTo(map);
+    marker.bindPopup(`
+      <div style="text-align:center; font-family:Inter;">
+        <img src="humi-logo.jpg" style="height:35px; border-radius:6px;"><br>
+        <strong>Humi Naturals</strong><br>
+        Moisture for the culture<br>
+        Pretoria, SA<br>
+        <small>hello@huminaturals.co.za</small>
+      </div>
+    `).openPopup();
+
+    // Contact form validation - Fixes Error 405
+    document.getElementById('contact-form').addEventListener('submit', function(e){
+      e.preventDefault();
+      document.querySelectorAll('.error').forEach(el=>el.textContent='');
+      let valid=true;
+      const name=document.getElementById('c-name').value.trim();
+      const email=document.getElementById('c-email').value.trim();
+      const msg=document.getElementById('c-message').value.trim();
+      
+      if(name.length<2){document.getElementById('err-c-name').textContent='Name required'; valid=false;}
+      if(!/^\S+@\S+\.\S+$/.test(email)){document.getElementById('err-c-email').textContent='Valid email required'; valid=false;}
+      if(msg.length<10){document.getElementById('err-c-message').textContent='Message at least 10 chars'; valid=false;}
+      
+      if(!valid) return;
+      
+      document.getElementById('c-success').innerHTML='<div class="success-box"><strong>Message sent!</strong><br>Thanks '+name+', we will reply to '+email+' soon!</div>';
+      this.reset();
+    });
+  </script>
+  <script src="script.js"></script>
+</body>
+</html>
